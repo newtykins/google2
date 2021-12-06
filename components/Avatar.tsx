@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 interface AvatarProps {
   url: string;
   className?: string;
@@ -7,7 +5,8 @@ interface AvatarProps {
 
 const Avatar = ({ url, className }: AvatarProps) => {
   return (
-    <Image
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
       loading="lazy"
       src={url}
       alt="Profile Picture"

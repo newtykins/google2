@@ -12,7 +12,6 @@ interface SearchProps {
 
 const Search: NextPage = ({ results }: SearchProps) => {
   const router = useRouter();
-  console.log(results);
 
   return (
     <div>
