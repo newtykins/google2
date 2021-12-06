@@ -29,7 +29,7 @@ const Search: NextPage = ({ results }: SearchProps) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const useDummyData = true;
+  const useDummyData = false;
   const startIndex = context.query.s || 0;
 
   // Make the search

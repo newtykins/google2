@@ -40,6 +40,7 @@ const Header = () => {
             type="text"
             ref={searchQueryReference}
             className="flex-grow w-full focus:outline-none"
+            defaultValue={router.query.q}
           />
 
           <XIcon

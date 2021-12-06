@@ -1,3 +1,5 @@
+import PaginationButtons from './PaginationButtons';
+
 interface SearchResultsProps {
   results: any;
 }
@@ -28,6 +30,8 @@ export const SearchResults = ({ results }: SearchResultsProps) => {
           </div>
         );
       })}
+
+      <PaginationButtons />
     </div>
   );
 };
