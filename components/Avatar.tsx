@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 interface AvatarProps {
   url: string;
   className?: string;
@@ -5,7 +7,7 @@ interface AvatarProps {
 
 const Avatar = ({ url, className }: AvatarProps) => {
   return (
-    <img
+    <Image
       loading="lazy"
       src={url}
       alt="Profile Picture"

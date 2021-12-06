@@ -9,7 +9,10 @@ const PaginationButtons = () => {
   return (
     <div className="flex max-w-lg justify-between text-blue-700 mb-10">
       {startIndex >= 10 && (
-        <Link href={`/search?q=${router.query.q}&s=${startIndex - 10}`}>
+        <Link
+          href={`/search?q=${router.query.q}&s=${startIndex - 10}`}
+          passHref
+        >
           <div className="pgbtn">
             <ChevronLeftIcon className="h-5" />
             <p>Previous</p>
@@ -17,7 +20,7 @@ const PaginationButtons = () => {
         </Link>
       )}
 
-      <Link href={`/search?q=${router.query.q}&s=${startIndex + 10}`}>
+      <Link href={`/search?q=${router.query.q}&s=${startIndex + 10}`} passHref>
         <div className="pgbtn">
           <ChevronRightIcon className="h-5" />
           <p>Next</p>
