@@ -4,8 +4,29 @@ import Image from 'next/image'
 import Avatar from '../components/Avatar'
 import { MicrophoneIcon, ViewGridIcon } from '@heroicons/react/solid'
 import { SearchIcon } from '@heroicons/react/outline'
+import { useRef } from 'react'
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
+  const searchQueryReference = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+
+  const search = (e: React.MouseEvent<HTMLElement>) => {
+    // Stop the default behaviour of the buttons
+    e.preventDefault();
+
+    // Fetch the current search query
+    const { value: searchQuery } = searchQueryReference.current as HTMLInputElement;
+
+    console.log(searchQuery)
+
+    // If there is no text in the search query, do nothing
+    if (!searchQuery) return;
+    
+    // Otherwise, search for the result
+    router.push(`/search?q=${searchQuery}`)
+  }
+
   return (
     <div>
       <Head>
@@ -37,14 +58,14 @@ const Home: NextPage = () => {
         <div className="flex w-full mt-5 hover:shadow-lg focus-within:shadow-lg max-w-md rounded-full border border-gray-200 px-5 py-3 items-center sm:max-w-xl lg:max-w-2xl">
           <SearchIcon className="h-5 mr-3 text-gray-500" />
 
-          <input type="text" className="focus:outline-none flex-grow" />
+          <input type="text" className="focus:outline-none flex-grow" ref={searchQueryReference} />
 
           <MicrophoneIcon className="h-5" />
         </div>
 
         <div className="flex flex-col w-1/2 space-y-2 justify-center mt-8 sm:space-y-0 sm:flex-row sm:space-x-4">
-          <button className="btn">Google Search</button>
-          <button className="btn">I'm Feeling Lucky</button>
+          <button onClick={search} className="btn">Google Search</button>
+          <button onClick={search} className="btn">I'm Feeling Lucky</button>
         </div>
       </form>
     </div>
